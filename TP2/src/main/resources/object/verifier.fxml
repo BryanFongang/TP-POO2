@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="500.0" prefWidth="700.0" spacing="15.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="object.VerifierController">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="VERIFIER SI LA MARCHANDISE EST VOLEE" />
+
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Label prefWidth="120.0" text="Type d'objet:" />
+        <ComboBox fx:id="comboTypeObjet" prefWidth="200.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Phone" />
+                    <String fx:value="Laptop" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Label prefWidth="120.0" text="Code Barre:" />
+        <TextField fx:id="txtCodeBarre" prefWidth="200.0" />
+    </HBox>
+
+    <Button onAction="#onRechercherClick" prefWidth="150.0" text="Rechercher" />
+
+    <Separator />
+
+    <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Résultat de la recherche:" />
+
+    <VBox fx:id="resultatContainer" spacing="10.0" visible="false">
+        <Label fx:id="lblStatutVol" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <GridPane hgap="10.0" vgap="10.0">
+            <columnConstraints>
+                <ColumnConstraints minWidth="150.0" prefWidth="150.0" />
+                <ColumnConstraints hgrow="ALWAYS" prefWidth="400.0" />
+            </columnConstraints>
+
+            <Label text="Marque:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Label fx:id="lblMarque" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Modèle:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Label fx:id="lblModel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label text="Date de fabrication:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Label fx:id="lblDateFabrication" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <Label text="Stockage:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <Label fx:id="lblStockage" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <Label text="RAM:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <Label fx:id="lblRam" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+            <Label fx:id="lblTitreVol" text="Date du vol:" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <Label fx:id="lblDateVol" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+            <Label fx:id="lblTitreContact" text="Contact propriétaire:" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+            <Label fx:id="lblContactProprietaire" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+    </VBox>
+
+    <Label fx:id="lblNotFound" prefHeight="26.0" prefWidth="434.0" style="-fx-font-size: 16px;" text="Aucun objet trouvé avec ce code-barres." visible="false">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font></Label>
+
+    <HBox alignment="CENTER" spacing="10.0">
+        <Button onAction="#onRetourClick" prefWidth="100.0" text="Retour" />
+    </HBox>
+
+</VBox>
